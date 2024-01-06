@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "395209456613",
+    "firebase_url": "https://smart-trolley-727ab-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "smart-trolley-727ab",
+    "storage_bucket": "smart-trolley-727ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395209456613:android:82d614a0ce80b7e2208d0c",
+        "android_client_info": {
+          "package_name": "com.example.smart_shopping_cart_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxm6Z0kPyrQ9LaLCBa4vTO8tum573_coM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
