@@ -13,6 +13,7 @@ import '../ui/views/login/login_view.dart';
 import '../ui/views/login_register/login_register_view.dart';
 import '../ui/views/register/register_view.dart';
 import 'package:smart_shopping_cart_flutter/ui/views/admin/admin_view.dart';
+import 'package:smart_shopping_cart_flutter/ui/views/purchases/purchases_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -20,6 +21,7 @@ import 'package:smart_shopping_cart_flutter/ui/views/admin/admin_view.dart';
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
     MaterialRoute(page: AdminView),
+    MaterialRoute(page: PurchasesView),
 // @stacked-route
     MaterialRoute(page: LoginRegisterView),
     MaterialRoute(page: LoginView),

@@ -43,6 +43,10 @@ String uid;
 String path;
 
 
+String line1 = "";
+String line2 = "";
+
+
 FirebaseData stream;
 void streamCallback(StreamData data)
 {
@@ -64,17 +68,23 @@ void streamCallback(StreamData data)
   {
     Serial.println("Success data line1FB");
     String value = line1FB.to<String>(); 
+    line1 = value;
     lcd.clear(); 
     lcd.setCursor(0, 0);
-    lcd.print(value);
+    lcd.print(line1);
+    lcd.setCursor(0, 1);
+    lcd.print(line2);
   }
    if (line2FB.success)
   {
     Serial.println("Success data line2FB");
     String value = line2FB.to<String>(); 
+    line2 = value;
     lcd.clear(); 
+    lcd.setCursor(0, 0);
+    lcd.print(line1);
     lcd.setCursor(0, 1);
-    lcd.print(value);
+    lcd.print(line2);
 
   }
 }
@@ -235,6 +245,13 @@ void loop() {
   } else {
     Serial.println("No data");
   }
+
+  lcd.clear(); 
+  lcd.setCursor(0, 0);
+  lcd.print("NEW ITEM");
+  lcd.setCursor(0, 1);
+  lcd.print("SCANNED: ");
+  lcd.print(uidValue);
 
 
   // Halt PICC to stop communication

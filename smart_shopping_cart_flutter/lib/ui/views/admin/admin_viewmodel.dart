@@ -23,7 +23,9 @@ class AdminViewModel extends StreamViewModel<List<Product>> {
   final _dbService = locator<DatabaseService>();
   final _userService = locator<UserService>();
   final _firestoreService = locator<FirestoreService>();
+
   AppUser? get user => _userService.user;
+
   void logout() {
     _userService.logout();
     _navigationService.replaceWithLoginRegisterView();
@@ -37,7 +39,6 @@ class AdminViewModel extends StreamViewModel<List<Product>> {
   @override
   Stream<List<Product>> get stream => _firestoreService.getAllProducts();
 
-
   //Device data
   DeviceData _deviceData = DeviceData(l1: "", l2: "");
 
@@ -47,9 +48,9 @@ class AdminViewModel extends StreamViewModel<List<Product>> {
     _dbService.setDeviceData(_deviceData);
   }
 
-  bool _isShopping = false;
-  bool get isShopping => _isShopping;
+  final bool _isShopping = false;
 
+  bool get isShopping => _isShopping;
 
   void getDeviceData() async {
     setBusy(true);
@@ -77,11 +78,11 @@ class AdminViewModel extends StreamViewModel<List<Product>> {
     setDeviceData();
   }
 
-
   void showAddProductBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (context) => ProductAddBottomSheet(
+        rfid: node!.rfid,
         onProductAdded: (product) async {
           // Handle the newly added product here
           bool success = await _firestoreService.addProduct(product);
@@ -91,7 +92,7 @@ class AdminViewModel extends StreamViewModel<List<Product>> {
           } else {
             showDialog(title: "Error", description: "Please try again!");
             log.e('Failed to add repair to service');
-          }          // You can use the product data as needed, e.g., add it to Firestore
+          } // You can use the product data as needed, e.g., add it to Firestore
         },
       ),
     );
@@ -103,5 +104,9 @@ class AdminViewModel extends StreamViewModel<List<Product>> {
       title: title,
       description: description,
     );
+  }
+
+  void openPurchaseView() {
+    _navigationService.navigateToPurchasesView();
   }
 }

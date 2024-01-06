@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_shopping_cart_flutter/ui/smart_widgets/online_status.dart';
+import 'package:smart_shopping_cart_flutter/ui/views/widgets/invoice.dart';
 import 'package:stacked/stacked.dart';
-import 'package:smart_shopping_cart_flutter/ui/common/app_colors.dart';
-import 'package:smart_shopping_cart_flutter/ui/common/ui_helpers.dart';
 
 import 'home_viewmodel.dart';
 
@@ -29,10 +28,11 @@ class HomeView extends StackedView<HomeViewModel> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
-        child: Center(
+        child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ConditionButton(
                 text1: "Stop shopping",
@@ -40,10 +40,16 @@ class HomeView extends StackedView<HomeViewModel> {
                 isTrue: viewModel.isShopping,
                 onTap: viewModel.setShopping,
               ),
-              verticalSpaceLarge,
+              // verticalSpaceLarge,
               if (viewModel.isShopping)
                 Column(
-                  children: [],
+                  children: [
+                    YourInvoiceWidget(
+                      products: viewModel.products,
+                      totalCost: viewModel.totalCost,
+                      onProductSelected: viewModel.onProductSelected,
+                    )
+                  ],
                 ),
             ],
           ),

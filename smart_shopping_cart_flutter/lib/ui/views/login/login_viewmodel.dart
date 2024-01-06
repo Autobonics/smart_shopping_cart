@@ -32,7 +32,6 @@ class LoginViewModel extends FormViewModel {
         password: passwordValue!,
       );
       if (result.user != null) {
-
         AppUser? user = await _userService.fetchUser();
         if (user != null && user.userRole == "user") {
           _navigationService.replaceWithHomeView();
